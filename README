@@ -1,0 +1,8 @@
+To display help for the program:
+	$ ./lzw
+
+To compress a file:
+	$ ./lzw c input.html
+
+To decompress a file:
+	$ ./lzw d input.html.lzw
