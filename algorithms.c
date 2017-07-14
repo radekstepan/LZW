@@ -19,7 +19,10 @@ int decode(int code, FILE * outputFile);
 
 // compression
 void compress(FILE *inputFile, FILE *outputFile) {    
-    int prefix;
+    int prefix = getc(inputFile);
+    if (prefix == EOF) {
+        return;
+    }
     int character;
 
     int nextCode;
@@ -67,6 +70,9 @@ void decompress(FILE * inputFile, FILE * outputFile) {
     
     // prevcode = read in a code
     previousCode = readBinary(inputFile);
+    if (previousCode == 0) {
+        return;
+    }
     fputc(previousCode, outputFile);
     
     // while (there is still data to read)
